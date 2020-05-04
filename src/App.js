@@ -19,16 +19,16 @@ function App() {
         <Switch>
           <Route exact path='/' render={props =>
             <Home />
-          }/>
+          } />
           <Route exact path='/restaurants' render={props =>
             <Restaurants />
-          }/>
+          } />
           <Route exact path='/login' render={props =>
             <Login />
-          }/>
+          } />
           <Route exact path='/signup' render={props =>
-            <Signup />
-          }/>
+            <Signup {...props} />
+          } />
         </Switch>
       </div>
       <Footer />
