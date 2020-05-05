@@ -18,6 +18,16 @@ function signup(user) {
     .then(({ token }) => tokenService.setToken(token))
 }
 
+function getUser() {
+    return tokenService.getUserFromToken();
+}
+
+function logout() {
+    tokenService.removeToken();
+}
+
 export default {
-    signup
+    signup,
+    getUser,
+    logout
 };
