@@ -37,7 +37,7 @@ class App extends Component {
             } />
             <Route exact path='/restaurants' render={props =>
             userService.getUser()
-            ? <Restaurants />
+            ? <Restaurants {...props} />
             : <Redirect to="/login" />
             } />
             <Route exact path='/login' render={props =>
