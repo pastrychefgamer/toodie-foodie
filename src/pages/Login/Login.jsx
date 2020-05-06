@@ -6,7 +6,10 @@ const Login = (props) => {
     return (
         <main>
             <h1>Login</h1>
-            <LoginForm />
+            <LoginForm 
+            {...props}
+            handleSignUpOrLogin={props.handleSignupOrLogin}
+            />
         </main>
     );
 }
