@@ -30,6 +30,7 @@ class RestaurantForm extends React.Component {
             await restaurantService.create({ title, cuisine, addedBy });
             
             this.setState(this.getInitialState(), () => {
+                this.props.handleGetRestaurants();
                 this.props.history.push('/restaurants');
             });
         } catch (error) {

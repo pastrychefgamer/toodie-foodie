@@ -28,11 +28,15 @@ class App extends Component {
     this.setState({ user: null });
   }
 
-  async componentDidMount() {
+  handleGetRestaurants = async () => {
     if(userService.getUser()) {
       const { restaurants } = await restaurantService.index();
       this.setState({ restaurants });
     }
+  }
+
+  componentDidMount() {
+    this.handleGetRestaurants();
   }
 
   render() {
@@ -48,6 +52,7 @@ class App extends Component {
             userService.getUser()
             ? <Restaurants 
             {...props} 
+            handleGetRestaurants={this.handleGetRestaurants}
             restaurants={this.state.restaurants}
             />
             : <Redirect to="/login" />
