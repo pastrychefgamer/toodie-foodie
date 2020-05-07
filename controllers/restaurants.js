@@ -16,7 +16,7 @@ async function create(req, res) {
 
 async function index(req, res) {
     try {
-        const restaurants = await Restaurant.find({}).sort('-createdAt');
+        const restaurants = await Restaurant.find({}).sort('-createdAt').populate('addedBy');
         res.json({ restaurants });
     } catch (error) {
         res.status(401).json({err: 'Unauthorized!' });

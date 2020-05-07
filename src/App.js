@@ -10,11 +10,13 @@ import Login from './pages/Login/Login';
 
 import './App.css';
 import userService from './utils/userService';
+import restaurantService from './utils/restaurantService';
 
 
 class App extends Component {
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
+    restaurants: []
   }
 
   handleSignupOrLogin = () => {
@@ -24,6 +26,13 @@ class App extends Component {
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
+  }
+
+  async componentDidMount() {
+    if(userService.getUser()) {
+      const { restaurants } = await restaurantService.index();
+      this.setState({ restaurants });
+    }
   }
 
   render() {
@@ -37,7 +46,10 @@ class App extends Component {
             } />
             <Route exact path='/restaurants' render={props =>
             userService.getUser()
-            ? <Restaurants {...props} />
+            ? <Restaurants 
+            {...props} 
+            restaurants={this.state.restaurants}
+            />
             : <Redirect to="/login" />
             } />
             <Route exact path='/login' render={props =>

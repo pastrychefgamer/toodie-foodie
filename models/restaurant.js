@@ -9,7 +9,8 @@ const restaurantSchema = new Schema({
     cuisine: String,
     addedBy: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     }
 }, { timestamps: true });
 
