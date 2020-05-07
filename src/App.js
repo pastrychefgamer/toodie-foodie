@@ -16,16 +16,19 @@ import restaurantService from './utils/restaurantService';
 class App extends Component {
   state = {
     user: userService.getUser(),
-    restaurants: []
+    restaurants: [],
+    featured: []
   }
 
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() })
+    this.setState({ user: userService.getUser() }, () => {
+      this.handleGetFeatured();
+    })
   }
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ user: null, restaurants: [] });
   }
 
   handleGetRestaurants = async () => {
@@ -35,7 +38,13 @@ class App extends Component {
     }
   }
 
+  handleGetFeatured = async () => {
+    const { featured } = await restaurantService.getFeatured();
+    this.setState({ featured });
+  }
+
   componentDidMount() {
+    this.handleGetFeatured();
     this.handleGetRestaurants();
   }
 

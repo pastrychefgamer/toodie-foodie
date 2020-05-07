@@ -16,7 +16,12 @@ function index() {
     return fetch(BASE_URL).then(res => res.json());
 }
 
+function getFeatured() {
+    return fetch(BASE_URL + 'featured').then(res => res.json());
+}
+
 export default {
     create,
-    index
+    index,
+    getFeatured
 };
