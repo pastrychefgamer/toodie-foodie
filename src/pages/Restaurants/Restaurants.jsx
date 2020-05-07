@@ -11,6 +11,11 @@ const Restaurants = (props) => {
                 {formVisible ? 'Hide Form' : 'Show Form'}
             </button>
             {
+                formVisible
+                &&
+                <RestaurantForm {...props} />
+            }
+            {
                 props.restaurants.map(({title, _id, cuisine, addedBy} ) => (
                 <section key={_id}>
                     <h1>{title}</h1>
@@ -19,12 +24,6 @@ const Restaurants = (props) => {
                 </section>
                 ))
             }
-            {
-                formVisible
-                &&
-                <RestaurantForm {...props} />
-            }
-            
         </main>
     );
 }

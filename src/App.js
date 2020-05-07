@@ -55,7 +55,7 @@ class App extends Component {
         <div className="App-inner-container">
           <Switch>
             <Route exact path='/' render={props =>
-              <Home />
+              <Home featured={this.state.featured} />
             } />
             <Route exact path='/restaurants' render={props =>
             userService.getUser()
