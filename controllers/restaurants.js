@@ -1,7 +1,8 @@
 const Restaurant = require('../models/restaurant');
 
 module.exports = {
-    create
+    create,
+    index
 };
 
 async function create(req, res) {
@@ -10,5 +11,14 @@ async function create(req, res) {
         res.json({ restaurant });
     } catch (error) {
         res.status(401).json({ err: 'Unauthorized!' });
+    }
+}
+
+async function index(req, res) {
+    try {
+        const restaurants = await Restaurant.find({}).sort('-createdAt');
+        res.json({ restaurants });
+    } catch (error) {
+        res.status(401).json({err: 'Unauthorized!' });
     }
 }
