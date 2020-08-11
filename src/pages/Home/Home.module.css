@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: aliceblue;
+    margin: 10px;
+    width: 15rem;
+    height:20vmin;
+    border-radius: .8vmin;
+    box-shadow: 4px 4px 4px #999;
+    align-items: center;
+}

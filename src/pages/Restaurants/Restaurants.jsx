@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import RestaurantForm from '../../components/RestaurantForm/RestaurantForm';
-// import styles from './Restaurants.module.css';
+import styles from './Restaurants.module.css';
 
 const Restaurants = (props) => {
     const [ formVisible, setVisibility ] = useState(false);
@@ -17,11 +17,13 @@ const Restaurants = (props) => {
             }
             {
                 props.restaurants.map(({title, _id, cuisine, addedBy} ) => (
-                <section key={_id}>
-                    <h1>{title}</h1>
-                    <p>Cuisine: {cuisine}</p>
-                    <small>Added By: {addedBy.name}</small>
-                </section>
+                <div className={styles.container}>
+                    <section className={styles.section} key={_id}>
+                        <h1>{title}</h1>
+                        <p className={styles.content}>Cuisine: {cuisine}</p>
+                        <small className={styles.content}>Added By: {addedBy.name}</small>
+                    </section>
+                </div>
                 ))
             }
         </main>
