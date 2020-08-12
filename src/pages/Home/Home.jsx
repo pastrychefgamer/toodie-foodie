@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 
 const Home = (props) => {
     return (
-        <main>
+        <main className={styles.outercontainer}>
             <h1>Featured Restaurants</h1>
             {
                 props.featured.map(({title, cuisine, _id}) => (

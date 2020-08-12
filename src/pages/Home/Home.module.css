@@ -1,3 +1,7 @@
+.outercontainer {
+    font-size: 22px;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -15,4 +19,5 @@
     border-radius: .8vmin;
     box-shadow: 4px 4px 4px #999;
     align-items: center;
+    font-size: 20px;
 }
